@@ -30,9 +30,9 @@ export default class CustomView extends Component {
 
     goToTile = () => {
         this.props.navigation.navigate('Tile', {
-            title: 'title',
-            subtitle: 'subtitle',
-            description: 'description'
+            title: 'Tile title',
+            subtitle: 'Tile subtitle',
+            description: 'Tile description'
         });
     }
 
