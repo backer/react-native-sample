@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-export class CustomView extends Component {
+export default class CustomView extends Component {
     state = {
         count1: 0,
         count2: 0
@@ -28,6 +28,14 @@ export class CustomView extends Component {
         })
     }
 
+    goToTile = () => {
+        this.props.navigation.navigate('Tile', {
+            title: 'title',
+            subtitle: 'subtitle',
+            description: 'description'
+        });
+    }
+
     render() {
         return (
         <View style={styles.mainView}>
@@ -44,6 +52,10 @@ export class CustomView extends Component {
                 color='#FF0000'
                 style={styles.resetButton}
                 onPress={this.reset}/>
+            <Button
+                title='Go to Tile'
+                color='#00FF00'
+                onPress={this.goToTile} />
         </View>
         )
     }

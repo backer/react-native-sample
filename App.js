@@ -1,11 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
   SafeAreaView,
@@ -23,20 +16,31 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import { BasicTile } from './components/BasicTile';
-import { CustomView } from './components/CustomView';
+import BasicTile from './components/BasicTile';
+import CustomView from './components/CustomView';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 const App: () => React$Node = () => {
+  tileProps = {title: 'title', subtitle: 'subtitle', description: 'description'}
   return (
-    <>
-      <CustomView />
-      <BasicTile 
-        title='Title'
-        subtitle='Subtitle'
-        description='Description'
-        top={100}
-        marginTop={100}/>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={CustomView} />
+        <Stack.Screen name="Tile" component={BasicTile}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+    // <>
+    //   <CustomView />
+    //   <BasicTile 
+    //     title='Title'
+    //     subtitle='Subtitle'
+    //     description='Description'
+    //     top={100}
+    //     marginTop={100}/>
+    // </>
     // <>
     //   <StatusBar barStyle="dark-content" />
     //   <SafeAreaView>

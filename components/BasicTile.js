@@ -1,7 +1,8 @@
+import { useRoute } from '@react-navigation/native';
 import React, { Component } from 'react';
 import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export class BasicTile extends Component {
+class BasicTile extends Component {
     state = {
         clicks: 0
     }
@@ -12,12 +13,17 @@ export class BasicTile extends Component {
         })
     }
 
-    render(props) {
+    render() {
+        route = this.props.route;
+
+        title = this.props.title || route.params.title;
+        subtitle = this.props.subtitle || route.params.subtitle;
+        description = this.props.description || route.params.description;
         return(
         <Pressable style={styles.mainView} onPress={this.onClick}>
-            <Text>{this.props.title}</Text>
-            <Text>{this.props.subtitle}</Text>
-            <Text>{this.props.description}</Text>
+            <Text>{title}</Text>
+            <Text>{subtitle}</Text>
+            <Text>{description}</Text>
             <Text>{this.state.clicks} clicks</Text>
         </Pressable>
         )
@@ -30,3 +36,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 })
+
+export default function(props) {
+    const route = useRoute();
+    return <BasicTile {...props} route={route} />
+}
