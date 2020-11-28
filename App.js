@@ -20,6 +20,7 @@ import BasicTile from './components/BasicTile';
 import CustomView from './components/CustomView';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Routes } from './Constants';
 
 const Stack = createStackNavigator();
 
@@ -27,9 +28,9 @@ const App: () => React$Node = () => {
   tileProps = {title: 'title', subtitle: 'subtitle', description: 'description'}
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={CustomView} />
-        <Stack.Screen name="Tile" component={BasicTile}/>
+      <Stack.Navigator initialRouteName={Routes.Home}>
+        <Stack.Screen name={Routes.Home} component={CustomView} />
+        <Stack.Screen name={Routes.Tile} component={BasicTile}/>
       </Stack.Navigator>
     </NavigationContainer>
     // <>

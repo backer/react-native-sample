@@ -1,6 +1,7 @@
 import { useRoute } from '@react-navigation/native';
 import React, { Component } from 'react';
-import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Colors } from '../Constants';
 
 class BasicTile extends Component {
     state = {
@@ -21,10 +22,20 @@ class BasicTile extends Component {
         description = this.props.description || route.params.description;
         return(
         <Pressable style={styles.mainView} onPress={this.onClick}>
-            <Text>{title}</Text>
-            <Text>{subtitle}</Text>
-            <Text>{description}</Text>
-            <Text>{this.state.clicks} clicks</Text>
+            <View style={styles.imageColumn}>
+                <Image
+                    source={require('../images/thumbnail.png')}
+                    style={styles.thumbnail} />
+                <Text style={{
+                    fontSize: 16,
+                    fontWeight: this.state.clicks > 0 ? "bold" : "normal"
+                    }}>{this.state.clicks} clicks</Text>
+            </View>
+            <View style={styles.textPanel} marginStart={10}>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.subtitle}>{subtitle}</Text>
+                <Text style={styles.description}>{description}</Text>
+            </View>
         </Pressable>
         )
     }
@@ -32,8 +43,35 @@ class BasicTile extends Component {
 
 const styles = StyleSheet.create({
     mainView: {
-        justifyContent: 'center',
-        alignItems: 'center'
+        flexDirection: 'row',
+        backgroundColor: Colors.white
+    },
+    imageColumn: {
+        flexDirection: 'column',
+        margin: 10
+    },
+    textPanel: {
+        flexDirection: 'column',
+        top: 10,
+        flexShrink: 1,
+        paddingEnd: 10,
+        paddingBottom: 10
+    },
+    thumbnail: {
+        width: 160,
+        height: 90
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+    subtitle: {
+        fontSize: 16,
+        fontStyle: "italic"
+    },
+    description: {
+        fontSize: 16,
+        flexWrap: 'wrap'
     }
 })
 

@@ -30,9 +30,9 @@ export default class CustomView extends Component {
 
     goToTile = () => {
         this.props.navigation.navigate('Tile', {
-            title: 'Tile title',
-            subtitle: 'Tile subtitle',
-            description: 'Tile description'
+            title: 'Xion First Clear',
+            subtitle: 'Critical Mode One Hit',
+            description: 'VoD of my first clear of the Xion data battle on critical mode. Only got hit once!'
         });
     }
 
