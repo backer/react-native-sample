@@ -30,8 +30,11 @@ class BasicTile extends Component {
                     fontSize: 16,
                     fontWeight: this.state.clicks > 0 ? "bold" : "normal"
                     }}>{this.state.clicks} clicks</Text>
+                <Image 
+                    source={require('../images/play_icon.png')}
+                    style={styles.playIcon}/>
             </View>
-            <View style={styles.textPanel} marginStart={10}>
+            <View style={styles.textPanel}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.subtitle}>{subtitle}</Text>
                 <Text style={styles.description}>{description}</Text>
@@ -72,6 +75,13 @@ const styles = StyleSheet.create({
     description: {
         fontSize: 16,
         flexWrap: 'wrap'
+    },
+    playIcon: {
+        width: 20,
+        height: 20,
+        position: "absolute",
+        top: 65,
+        start: 5
     }
 })
 
